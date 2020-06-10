@@ -10,7 +10,7 @@ pipeline {
 	stage('Unit Tests') {
 	    // Run Unit Tests
             steps{
-                sh 'mvn -U -f maths/pom.xml clean test'
+                sh 'mvn -U clean test'
             }
         }
 
@@ -18,7 +18,7 @@ pipeline {
 	    agent any
             steps {
                 withSonarQubeEnv('MySonarQubeServer') {
-                    sh 'mvn -U -f maths/pom.xml clean package sonar:sonar'
+                    sh 'mvn -U clean package sonar:sonar'
                 }
             }
         }
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 rtMavenRun (
                     tool: "maven3.6", // Tool name from Jenkins configuration
-                    pom: 'maths/pom.xml',
+                    pom: 'pom.xml',
                     goals: 'clean install -Dmaven.test.skip=true',
                     deployerId: "MAVEN_DEPLOYER",
                     resolverId: "MAVEN_RESOLVER"
