@@ -36,7 +36,7 @@ pipeline {
 		// specify Artifactory server
                 rtServer (
                     id: "ARTIFACTORY_SERVER",
-                    url: "http://172.21.0.2:8082/artifactory",
+                    url: "http://172.21.0.3:8082/artifactory",
 		    credentialsId: 'adminjfrog'
                 )
 
